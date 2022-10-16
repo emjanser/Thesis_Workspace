@@ -111,3 +111,8 @@ class MultitaskGPModel(gpytorch.models.ExactGP):
         covar1 = covar1_x.mul(covar1_i)
         covar2 = covar2_x.mul(covar2_i)
         return gpytorch.distributions.MultivariateNormal(mean_x, covar1+covar2)
+
+
+# test 1 2 
+
+# test 3
