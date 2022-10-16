@@ -8,8 +8,6 @@ import random as rnd
 import time
 import os
 
-# Commited
-
 from matplotlib import pyplot as plt
 
 matplotlib.use("PDF")
