@@ -12,6 +12,11 @@ from matplotlib import pyplot as plt
 
 matplotlib.use("PDF")
 
+# lütfen çalış amk
+# sal beni lütfen
+# yeşiwş fdjoasıuh ADHOGIUSFHja
+# Sonunda
+
 np.random.seed(rnd.randint(0, 1000000)) # makes it possible for .permutation() to be randomized every single run of the code
 
 """ Emrecan Serin 11/10/22 -
