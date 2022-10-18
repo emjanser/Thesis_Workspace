@@ -39,7 +39,7 @@ def lf(x):
 X = np.linspace(0, 1, 1000)[:,np.newaxis] 
 
 Nhf=8 
-Nlf=20
+Nlf=8
 
 X_lf = np.random.permutation(X)[0:Nlf]
 X_hf = np.random.permutation(X_lf)[0:Nhf]
