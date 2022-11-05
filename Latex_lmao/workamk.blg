@@ -1,0 +1,15 @@
+[0] Config.pm:306> INFO - This is Biber 2.18
+[0] Config.pm:309> INFO - Logfile is 'workamk.blg'
+[193] biber-MSWIN64:340> INFO - === 
+[263] Biber.pm:418> INFO - Reading 'workamk.bcf'
+[464] Biber.pm:978> INFO - Found 2 citekeys in bib section 0
+[488] Biber.pm:4401> INFO - Processing section 0
+[507] Biber.pm:4592> INFO - Looking for bibtex file 'biblio.bib' for section 0
+[606] bibtex.pm:1713> INFO - LaTeX decoding ...
+[615] bibtex.pm:1518> INFO - Found BibTeX data source 'biblio.bib'
+[687] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[687] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[687] Biber.pm:4221> INFO - Sorting list 'nyt/global//global/global' of type 'entry' with template 'nyt' and locale 'en-US'
+[688] Biber.pm:4227> INFO - No sort tailoring available for locale 'en-US'
+[692] bbl.pm:654> INFO - Writing 'workamk.bbl' with encoding 'UTF-8'
+[694] bbl.pm:757> INFO - Output to workamk.bbl

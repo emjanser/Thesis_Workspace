@@ -1,0 +1,200 @@
+\documentclass[12pt,letterpaper]{article}
+
+% Report Style Guide
+\setlength{\parindent}{0em}     
+\setlength{\parskip}{1.5em}    
+
+\usepackage[backend=biber,style=authoryear]{biblatex}
+\addbibresource{biblio.bib}
+\usepackage{tabularx}
+\usepackage{fancybox}
+\usepackage{epsfig,graphicx}
+\usepackage{pstricks}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{eucal}
+\usepackage{txfonts}
+\usepackage[english]{babel}
+\usepackage[colorlinks]{hyperref}
+\usepackage{caption}
+\usepackage{float}
+\usepackage{siunitx}
+\usepackage{color}
+\usepackage{csquotes}
+\usepackage{sectsty}
+\usepackage[bottom]{footmisc}
+
+\setlength{\footnotemargin}{2mm}
+
+
+%=============== Margin
+\usepackage{geometry}
+\geometry{a4paper,margin=1in}
+%===============
+\usepackage{setspace}
+\hyphenpenalty=10000
+\tolerance=10000
+
+%=============== Nomenclature
+\usepackage[T1]{fontenc}
+%\usepackage{nomencl}
+%\makenomenclature
+
+
+
+\definecolor{codegreen}{rgb}{0,0,0}
+\definecolor{codegray}{rgb}{0,0,0}
+\definecolor{backcolour}{rgb}{0,0,0}
+\hypersetup{colorlinks=true,linkcolor=black,citecolor=black,filecolor=black,urlcolor=black,}
+
+
+\sectionfont{\fontsize{14}{14}\selectfont}
+
+
+
+\begin{document}
+The University of Manchester \\
+School of Mechanical, Aerospace and Civil Engineering\\  
+Undergraduate Individual Project Proposal
+
+\vspace{1cm}
+ 
+\begin{center}\vspace{-1cm}
+\textbf{\Large Development of Multi-Fidelity Neural Networks for Optimization  of 2D Aerofoil Simulations}\\ 
+\vspace{0.3cm}
+Emrecan Serin\\
+ID: 10536545\\ 
+
+Supervisor: Dr Alex Skillen
+\end{center}
+
+\vspace{-0.8cm}
+
+\rule{\linewidth}{0.1mm}
+
+\vspace{-0.9cm}
+
+\addcontentsline{toc}{section}{Abstract}
+\begingroup
+\centering\section*{Abstract} \par
+\endgroup
+\vspace{-2em}
+    In a typical engineering design process, the use of simulation software and experimentation is an iterative and a crucial step. This process can be costly and computationally demanding depending on the type of simulation or experiment, naturally, one would want to gather as much data as accurate as possible. A way to achieve this is by processing the output data utilizing machine learning methods such as neural networks. In fact, high fidelity (HF) and low fidelity (LF) data from simulations can be processed in a model to enrich the data obtained without re-running the simulations. Although, this process comes with its downsides. For instance, HF models developed from methods using wind tunnel tests and computational fluid dynamics (CFD) simulations might not produce the desired result since the scarcity of the data due to simulation's computational demands might limit the number of data points that can be produced. On the other hand, less demanding LF models from  can produce higher quantity of data points with the downside of the results being less accurate. Therefore, a Multi-Fidelity Neural Network (MFNN) can be used in implementing a bridge between these fidelities to create a MF surrogate model over a single combined fidelity to obtain an accurate and a computationally light model. The aim of this project is to optimise the application of existing and emerging MFNN methods in academics and industry by applying theoretical and practical methods to analyse and bring a solution to the weaknesses of MFNN models. Furthermore, as a practical model to work on, the aerodynamic properties such as the change of lift with varying angles of attack of a 2D Aerofoil will be used to represent the methodology. Finally, further aims of the project will include implementing changes into MFNN with methods such as, Physics Informed Neural Networks (PINN) and Bayesian Networks and these processes will be extended to combine multiple local flow features in the MFNN to build data points at angles of attack not included in the training data.
+    \vfill
+    \begin{center}
+        { \bf  \large The Department of Mechanical, Aerospace and Civil Engineering}\\    
+    \end{center}
+
+\pagenumbering{roman}
+
+
+\newpage
+
+\setlength{\parskip}{0.25em}    
+\tableofcontents
+\setlength{\parskip}{1.5em}  
+
+\newpage
+\addcontentsline{toc}{section}{Nomenclature}
+\section*{Nomenclature}
+
+\vspace{-1em}
+\begin{tabular}{lcl lcl}
+      HF & $-$ & High Fidelity \\
+      LF & $-$ & Low Fidelity \\
+      MF & $-$ & Multi Fidelity \\
+      ML & $-$ & Machine Learning \\
+      MFNN & $-$ & Multi-Fidelity Neural Network \\
+      GPR & $-$ & Gaussian Process Regression
+\end{tabular}
+
+ 
+\newpage
+
+\pagenumbering{arabic}
+\setcounter{page}{1}
+\section{Introduction}
+\vspace{-1.5em}
+    In engineering and science disciplines, the application of machine learning (ML) methods to enhance quality of data obtained from experiments and simulations are becoming a common occurrence. Since, the application of a ML model is possible in any process where there is a continuous data flow which a ML model can be trained on. Thus, throughout the years, the use of ML methods such as various regression models and Deep Learning Neural Networks (DLNN) which can combine these models have become more eligible as a post processing method to enhance the data produced from simulations without needing to re-run them. As a result, increasing the efficiency of production of data and decreasing simulation costs. Although, this process comes with a few drawbacks depending on the model such as a decreased margin size, lower accuracy due to noise and methods such as 'model parameter' tuning can be used to dampen these effects and will be further mentioned in Section (\ref{litreview}) \parencite{Burkov.2019}. Moreover, this report's scope will be to apply these techniques to already existing data and CFD simulations of 2D Aerofoils to improve the results from simulations while decreasing the resource allocated to this process with the use of MFNNs to bridge HF\footnote{A property of neural network models to measure the trustworthiness of the predicted data.}  and LF models to obtain a surrogate model\footnote{Training data obtained probing simulation outputs at several selected locations in design parameter space, trained by a data-driven approach.}  that is more accurate opposed to using a single fidelity model in the design of an aerofoil, which is a shape that can be effectively parameterised \parencite{Mole.2022}.
+
+    \subsection{Motivation} \label{motivation}
+    \vspace{-1.5em}
+    The aim of this report will be to analyse Deep Learning Multi-Fidelity Neural Network methods to provide a detailed explanation about how they function and improve the model implementing methods such as, PINNs and Bayesian Networks. An additional and a possible further aim of this report will be to combine the MFNN model with Convolutional Neural Networks
+    (CNN).
+
+       
+    
+\subsection{Research Questions and Hypothesis Testing}
+\vspace{-1.5em}
+
+Using this MFNN, a low quantity of highly trained HF data points using CFD can be combined with multiple LF data points gathered using XFoil (An interactive program for the design and analysis of subsonic isolated 2D aerofoils) to build up fuller descriptions of the flow at angles not included in the training data for the model, making it possible for the model to predict flow at in larger parameter space with a higher accuracy.
+
+\subsection{Relevance and Impact}
+\vspace{-1.5em}
+    
+    CFD is hard to replicate in larger amounts and LF data is easily accessible. MF model to get the results we want to get with way less energy use thanks to MF model predicting what HF models can predict using less HF points with the help of LF.
+
+
+
+\newpage
+\section{Methodology} \label{methodology}
+\vspace{-1.5em}
+
+
+        NN have neurons with weight, bias and nodes that connect to each other, we using forward and backward blas blas in pytorch with the help of activation functions in between we can create a model predicting the correlation between points in a LF or HF model. When things come to MF models we use the output of a LF model and slap it into a HF model to create MF model network which gives us the best of the two. 
+        
+        There are linearity and correlation problems which can be fixed with the use of kernels, likelihoods and optimisers.
+        
+        
+        show a table of MFNN from that source.
+        
+        show plots and your plot about the GPR as an example
+    
+        Neural networks (NNs) are a collection of nested functions that are executed on some input data. These functions are defined by parameters (consisting of weights and biases), which in PyTorch are stored in tensors. Utilizing Python and PyTorch to form the multi-fidelity neural network to and improve the prediction of flow characteristics of 2D aerofoils with changing parameters. Thus, proving a trained model can predict results with high accuracy at locations in the parameter space away from the trained data set. 
+         
+        Improve accuracy of surrogate models that can be acquired using multi-fidelity modelling compared to single fidelity modelling.
+        
+        
+        
+        to identify characteristics of MFNN modelling with various input parameters to test how far the model can predict with various NN methods.
+        
+        The high and low fidelity training and testing datasets will be produced using highly meshed CFD models of a NACA\footnote{Aerofoil shapes for aircraft wings developed by the National Advisory Committee for Aeronautics (NACA).} type 2D Aerofoil (NACA type to be determined) using ANSYS and XFoil.
+   
+\section{Literature Review} \label{litreview}
+\vspace{-1.5em}
+
+
+
+
+\section{Project Plan} \label{projectplan}
+\vspace{-1.5em}
+
+
+
+
+
+• a detailed initial plan of the work the student
+intended to carry out before the project began;
+• updated /re
+-plan to reflect any changes that occurred
+after the project was started.
+• a critical reflection on the main risks and potential
+delays on the planned tasks
+.
+
+
+
+
+
+
+
+
+
+
+
+
+\newpage
+\setlength\bibitemsep{0.5\baselineskip}
+\printbibliography
+
+\end{document}
