@@ -29,50 +29,31 @@ Comment 4: I had a familiar array dimension problem with line 94 so I used .resh
 start_timer = time.time()
 def hf(x): # defines the hf and lf sine functions
     return 1.8*np.sin(8.0*np.pi*x)*2*x  # the accurately simulated sin model for HF data
-
-
 def lf(x):
     return np.sin(8.0*np.pi*x)*x # the inaccurately simulated sin model for LF data
 
-
 # Training set
 X = np.linspace(0, 1, 1000)[:,np.newaxis] 
-
 Nhf=8 
 Nlf=20
-
 X_lf = np.random.permutation(X)[0:Nlf]
 X_hf = np.random.permutation(X_lf)[0:Nhf]
 
-gpr_hf = GaussianProcessRegressor(kernel=RBF(), n_restarts_optimizer=200).fit(X_hf,hf(X_hf)) 
-gpr_lf = GaussianProcessRegressor(kernel=RBF(), n_restarts_optimizer=200).fit(X_lf,lf(X_lf)) 
 
-pred_hf_mean, pred_hf_std = gpr_hf.predict(X, return_std=True)
+# GPR
+
+gpr_lf = GaussianProcessRegressor(kernel=RBF(), n_restarts_optimizer=200).fit(X_lf,lf(X_lf)) 
+gpr_hf = GaussianProcessRegressor(kernel=RBF(), n_restarts_optimizer=200).fit(X_hf,hf(X_hf))
+ 
 pred_lf_mean, pred_lf_std = gpr_lf.predict(X, return_std=True)
+pred_hf_mean, pred_hf_std = gpr_hf.predict(X, return_std=True)
+
 
 # MF start point
-L1mean = gpr_lf.predict(X_hf) # using the gpr_lf model which uses X_lf points and X_lf data,
-                              # it predicts an output using the inputs of X_hf points
-
-# print(L1mean)
-# print(X_hf)
-
+L1mean = gpr_lf.predict(X_hf)
 L1mean = L1mean.reshape(-1,1)
 
-print(L1mean)
-print(X_hf)
-
-print(len(L1mean))
-print(len(X_hf))
-
-
 L2_train = np.hstack((X_hf, L1mean))
-
-print(len(L2_train))
-print(L2_train)
-print(L2_train.shape) #shapeini veriyor ki [8,2x]
-
-
 
 
 gpr_mf_l2 = GaussianProcessRegressor(kernel=RBF()*RBF()+RBF(),n_restarts_optimizer=200).fit(L2_train,hf(X_hf))

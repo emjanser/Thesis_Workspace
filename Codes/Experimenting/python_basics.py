@@ -34,3 +34,7 @@ print(y_test)
 y_test = y_test.view(-1, 1)
 
 print(y_test)
+
+hidden_dims = 6*([32, 64, 128, 256, 512, 1014, 2028, 2028, 2028, 2028])
+
+print(hidden_dims[:6])
