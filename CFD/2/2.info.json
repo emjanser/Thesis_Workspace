@@ -1,0 +1,55 @@
+{
+    "version": 0,
+    "model_name": "2D Sphere.SLDPRT",
+    "project_name": "Project(1)",
+    "config_name": "Default",
+    "project_path": "C:\\Users\\emjan\\Documents\\GitHub\\Dissertation_Workspace\\CFD\\2\\2.xmlconfig",
+    "finished": true,
+    "mesh": {
+        "cells_total": 5820,
+        "cells_fluid": 5820,
+        "cells_solid": 192,
+        "cells_fluid_containing_solid": 60
+    },
+    "telemetry": {
+        "prepare_geometry_finished": "18:55:23+0200",
+        "prepare_geometry_total_time": 0,
+        "cpu_time_solver_total": 499,
+        "iteration": 6010,
+        "travel": 66.32595237618975,
+        "phys_time": 10.0,
+        "time_step": 0.000712171362890146,
+        "last_iteration_finished": "19:03:42+0200",
+        "cpu_time_per_last_iter": 0,
+        "cpu_time_left": 0,
+        "iterations_per_travel": 91
+    },
+    "goals": [],
+    "settings": {
+        "default_fluids": [
+            "Air"
+        ],
+        "analysis_type": "external",
+        "heat_conduction_in_solids": false,
+        "radiation": false,
+        "time_dependent": true,
+        "gravity": false,
+        "flow_type": "laminar and turbulent",
+        "cavitation": false,
+        "high_mach_number": true,
+        "free_surface": false,
+        "structural": false,
+        "electromagnetism": false
+    },
+    "system_info": {
+        "product_name": "Flow Simulation 2022  x64 / 5593 / SOLVER ver. efd_2021_2.5587_14.01.2022+LamBL_4order_point_appr",
+        "cad_version": "SOLIDWORKS 2022 SP3.1",
+        "computer_name": "MSI",
+        "user_name": "emjan",
+        "os": "Windows 10 (or higher) (Version 10.0.19045)",
+        "cpu": "Intel(R) Core(TM) i7-10750H CPU @ 2.60GHz",
+        "number_of_cores": 12,
+        "memory_avail": 3303,
+        "memory_total": 16200
+    }
+}
