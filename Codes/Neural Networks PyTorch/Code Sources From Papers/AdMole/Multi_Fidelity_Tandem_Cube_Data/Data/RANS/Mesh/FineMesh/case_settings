@@ -1,1 +1,0 @@
-{"Name": "FineMesh", "RASModel": "kOmegaSST", "Ncells": {"Nxi": 20, "Nxc": 60, "Nxb": 20, "Nxo": 40, "Nyl": 100, "Nyu": 25, "Nzo": 25, "Nzc": 60, "Nnc": 100}}
