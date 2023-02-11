@@ -1,0 +1,1 @@
+{"Name": "CoarseMesh", "RASModel": "kOmegaSST", "Ncells": {"Nxi": 10, "Nxc": 30, "Nxb": 20, "Nxo": 15, "Nyl": 60, "Nyu": 12, "Nzo": 12, "Nzc": 30, "Nnc": 60}}

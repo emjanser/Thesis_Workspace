@@ -1,0 +1,30 @@
+[
+  {
+    "Name": "a0",
+    "FlowAngle": 0
+  },
+  {
+    "Name": "a5",
+    "FlowAngle": 5
+  },
+  {
+    "Name": "a10",
+    "FlowAngle": 10
+  },
+  {
+    "Name": "a15",
+    "FlowAngle": 15
+  },
+  {
+    "Name": "a20",
+    "FlowAngle": 20
+  },
+  {
+    "Name": "a25",
+    "FlowAngle": 25
+  },
+  {
+    "Name": "a30",
+    "FlowAngle": 30
+  }
+]
