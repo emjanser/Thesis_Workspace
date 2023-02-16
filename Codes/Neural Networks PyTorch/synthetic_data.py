@@ -1,3 +1,5 @@
+import numpy as np
+
 # Synthetic Data - Which gets more complex step by step 
 
 # (a) Continuous functions with linear relationship

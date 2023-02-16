@@ -1,7 +1,0 @@
-2023-Jan-01 18:31:34
-Computer name:	MSI
-Number of cores used in calculation:	12
-Configuration name:	Default
-Project name:	2D Flow Around Sphere
-
-Warnings on last iteration: 

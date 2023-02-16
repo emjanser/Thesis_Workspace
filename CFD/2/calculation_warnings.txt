@@ -1,7 +1,0 @@
-2023-Jan-01 19:03:42
-Computer name:	MSI
-Number of cores used in calculation:	12
-Configuration name:	Default
-Project name:	Project(1)
-
-Warnings on last iteration: 
