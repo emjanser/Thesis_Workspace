@@ -39,22 +39,19 @@ def QH_f(y):
 
 
 # (b) Discontinuous functions with linear relationship
-def QL_b(y):
-    if 0 <= y and y <= 0.5:
-        return 2*QL_b(y) - 20*y + 20
-    elif 0.5 < y and y <= 1:
-        return 4 + 2*QL_b(y) - 20*y + 20
-    else:
-        return ValueError("(b) Range Error")
+def LF(y):
+    zeros = torch.zeros_like(y)
+    half = torch.ones_like(y) * 0.5
+    y_0 = torch.where(y <= half, 0.5 * (6 * y - 2)**2 * torch.sin(12 * y - 4) + 10 * (y - 0.5), zeros)
+    y_1 = torch.where(half < y, 3 + 0.5 * (6 * y - 2)**2 * torch.sin(12 * y - 4) + 10 * (y - 0.5), y_0)
+    return y_1
 
-def QH_b(y):
-    if 0 <= y and y <= 0.5:
-        return 0.5 * (6 * y - 2)**2 * np.sin(12 * y - 4) + 10 * (y - 0.5)
-    elif 0.5 < y and y <= 1:
-        return 3 + 0.5 * (6 * y - 2)**2 * np.sin(12 * y - 4) + 10 * (y - 0.5)
-    else:
-        return ValueError("(b) Range Error")
-
+def HF(y):
+    zeros = torch.zeros_like(y)
+    half = torch.ones_like(y) * 0.5
+    y_0 = torch.where(y <= half, 2*LF(y) - 20*y + 20, zeros)
+    y_1 = torch.where(half < y, 4 + 2*LF(y) - 20*y + 20, y_0)
+    return y_1
 
 # (d) Continuous oscillation functions with nonlinear relationship
 def QL_c(y):

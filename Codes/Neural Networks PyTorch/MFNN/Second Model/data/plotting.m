@@ -20,41 +20,43 @@ X_HF_TRAIN = table2array(readtable('X_HF_TRAIN.txt')).';
 %% Plotting
 
 % LF Plot
-LF_FIGURE = figure('Renderer', 'painters', 'Position', [50 50 900 400]);
-target = plot(Z, HF_Z, 'Color', [0, 0.275, 0.545], 'DisplayName', 'Target Sine Wave', 'LineWidth', 3);
+LF_FIGURE = figure('Renderer', 'painters', 'Position', [50 50 600 400]);
+
+
+target = plot(Z, HF_Z, 'Color', "k", 'DisplayName', 'Target Sine Wave', 'LineWidth', 3);
 hold on
-LF_PLOT = plot(X_LF_TRAIN, Y_LF_TRAIN, 'o', 'MarkerFaceColor', 'r','DisplayName', 'LF Training Data Points', MarkerSize=8);
-LF_POINTS = plot(Z, LF_PRED, "k", 'DisplayName', 'Low Fidelity Prediction', 'LineWidth', 2, "DisplayName", 'LOW Fidelity Prediction');
+LF_POINTS = plot(Z, LF_PRED, "r", 'DisplayName', 'Low Fidelity Prediction', 'LineWidth', 2, "DisplayName", 'LOW Fidelity Prediction');
+LF_PLOT = plot(X_LF_TRAIN, Y_LF_TRAIN, 'o', 'DisplayName', 'LF Training Data Points', 'MarkerSize', 8, 'Color', [0.6350 0.0780 0], 'MarkerFaceColor', [0.6350 0.0780 0]);
 xlabel('X')
 ylabel('Y')
-grid("minor")
+grid("on")
 % title('LOW Fidelity Network Prediction','FontName',"Montserrat")
 set(gca,'FontSize',11)
 title(legend([target, LF_PLOT, LF_POINTS],'NumColumns',1,'location','southwest','FontSize',11),'Legend','FontSize',12);
 
 
 % LH Plot
-HF_FIGURE = figure('Renderer', 'painters', 'Position', [50 50 900 400]);
-target = plot(Z, HF_Z, 'Color', [0, 0.275, 0.545], 'DisplayName', 'Target Sine Wave', 'LineWidth', 3);
+HF_FIGURE = figure('Renderer', 'painters', 'Position', [50 50 600 400]);
+target = plot(Z, HF_Z, 'Color', "k", 'DisplayName', 'Target Sine Wave', 'LineWidth', 3);
 hold on
-LF_PLOT = plot(X_HF_TRAIN, Y_HF_TRAIN, 'o', 'MarkerFaceColor', 'b','DisplayName', 'LF Training Data Points', MarkerSize=8);
-LF_POINTS = plot(Z, HF_PRED, "-k", 'DisplayName', 'Low Fidelity Prediction', 'LineWidth', 2, "DisplayName", 'HIGH Fidelity Prediction');
+LF_PLOT = plot(X_HF_TRAIN, Y_HF_TRAIN, 'bo', 'MarkerFaceColor', 'b','DisplayName', 'LF Training Data Points', MarkerSize=12);
+LF_POINTS = plot(Z, HF_PRED, "--b", 'DisplayName', 'Low Fidelity Prediction', 'LineWidth', 2, "DisplayName", 'HIGH Fidelity Prediction');
 xlabel('X')
 ylabel('Y')
-grid("minor")
+grid("on")
 % title('HIGH Fidelity Network Prediction','FontName',"Montserrat")
 set(gca,'FontSize',11)
 title(legend([target, LF_PLOT, LF_POINTS],'NumColumns',1,'location','southwest','FontSize',11),'Legend','FontSize',12);
 
 
 % LH Plot
-MF_FIGURE = figure('Renderer', 'painters', 'Position', [50 50 900 400]);
-target = plot(Z, HF_Z, 'Color', [0, 0.275, 0.545], 'DisplayName', 'Target Sine Wave', 'LineWidth', 3);
+MF_FIGURE = figure('Renderer', 'painters', 'Position', [50 50 600 400]);
+target = plot(Z, HF_Z, 'Color', "k", 'DisplayName', 'Target Sine Wave', 'LineWidth', 3);
 hold on
-MF_POINTS = plot(Z, MF_PRED, "--k", 'DisplayName', 'Low Fidelity Prediction', 'LineWidth', 2, "DisplayName", 'MULTI-Fidelity Prediction');
+MF_POINTS = plot(Z, MF_PRED, "-.",'Color', [0.5,0.3, 1], 'DisplayName', 'Low Fidelity Prediction', 'LineWidth', 4, "DisplayName", 'MULTI-Fidelity Prediction');
 xlabel('X')
 ylabel('Y')
-grid("minor")
+grid("on")
 % title('HIGH Fidelity Network Prediction','FontName',"Montserrat")
 set(gca,'FontSize',11)
 title(legend([target, MF_POINTS],'NumColumns',1,'location','southwest','FontSize',11),'Legend','FontSize',12);
@@ -64,4 +66,4 @@ title(legend([target, MF_POINTS],'NumColumns',1,'location','southwest','FontSize
 %% Saving Figures
 saveas(LF_FIGURE ,'LF_Figure.png')
 saveas(HF_FIGURE ,'HF_Figure.png')
-saveas(MF_FIGURE ,'MF_Figure.png')
+saveas(MF_FIGURE ,'MF2_Figure.png')
