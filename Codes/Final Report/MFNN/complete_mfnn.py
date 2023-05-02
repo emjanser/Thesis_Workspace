@@ -17,7 +17,7 @@ LF_input_dim = 1; LF_output_dim = 1
 HF_input_dim = 1; HF_output_dim = 1
 MF_input_dim = 2; MF_output_dim = 1
 
-# Data Prepration
+# -----Data Prepration------
 dir_path = os.path.abspath(os.path.dirname(""))
 NACA2412 = pd.read_excel(f"{dir_path}/data/NACA2412 Cm over AoA.xlsx").values # .values converts to numpy arrays
 NACA0012 = pd.read_excel(f"{dir_path}/data/NACA0012 Cm over AoA.xlsx").values

@@ -1,7 +1,7 @@
 import numpy as np
+import torch
 
 # Synthetic Data - Which gets more complex step by step 
-
 # (a) Continuous functions with linear relationship
 def QL_a(y):
     return 0.5 * (6 * y - 2) ** 2 * np.sin(12 * y - 4) + 10 * (y - 0.5) - 5
@@ -9,17 +9,12 @@ def QL_a(y):
 def QH_a(y):
     return (6 * y - 2)**2 * np.sin(12 * y - 4)
  
-
-
 # (c) Continuous functions with nonlinear relationship
 def QL_c(y):
     return 0.5 * (6 * y - 2)**2 * np.sin(12 * y - 4) + 10 * (y - 0.5) - 5
 
 def QH_c(y):
     return (6 * y - 2)**2 * np.sin(12 * y - 4) - 10 * (y - 1)**2
-
-
-
 
 # (e) Phase-Shifted Osicallations
 def QL_e(y):
@@ -28,15 +23,12 @@ def QL_e(y):
 def QH_e(y):
     return y**2 + QL_e(y + np.pi/10)
 
-
 # (f) Different Periodicities
 def QL_f(y):
     return np.sin(6 * np.sqrt(2) * np.pi * y)
 
 def QH_f(y):
     return np.sin(8 * np.pi * y + np.pi / 10)
-
-
 
 # (b) Discontinuous functions with linear relationship
 def LF(y):
