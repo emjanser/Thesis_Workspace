@@ -31,8 +31,8 @@ LF_TS = torch.linspace(0, 1, LF_training_size)[:,None]
 HF_TS = torch.linspace(0, 1, HF_training_size)[:,None] # forms a range of points between 0 and 1
 
 # Splitting the data sets into training and testing sets per fidelity
-X_LF_train, X_LF_test, Y_LF_train, Y_LF_test = train_test_split(LF_TS, LF(LF_TS), test_size=0.8, shuffle=156)
-X_HF_train, X_HF_test, Y_HF_train, Y_HF_test = train_test_split(HF_TS, HF(HF_TS), test_size=0.8, shuffle=156)
+X_LF_train, X_LF_test, Y_LF_train, Y_LF_test = train_test_split(LF_TS, LF(LF_TS), test_size=0.8, shuffle=True)
+X_HF_train, X_HF_test, Y_HF_train, Y_HF_test = train_test_split(HF_TS, HF(HF_TS), test_size=0.8, shuffle=True)
 
 # Forming the equally spaced training and testing sets per fidelity
 X_LF_train = LF_TS; Y_LF_train = LF(LF_TS) 
